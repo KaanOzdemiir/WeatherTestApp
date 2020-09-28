@@ -22,6 +22,7 @@ class HomePageVC: UIViewController {
             tableView.register(UINib(nibName: CitiesLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CitiesLayoutTableViewCell.identifier)
             tableView.register(UINib(nibName: DailyWeatherDetailTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DailyWeatherDetailTableViewCell.identifier)
             tableView.register(UINib(nibName: TimeWeatherLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TimeWeatherLayoutTableViewCell.identifier)
+            tableView.register(UINib(nibName: DailyDetailLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DailyDetailLayoutTableViewCell.identifier)
         }
     }
     
@@ -101,6 +102,10 @@ extension HomePageVC: UITableViewDataSource {
             cell.timeWeathers = viewModel.timeWeathers
             cell.collectionView.reloadData()
             return cell
+        case .dailyDetailLayout:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DailyDetailLayoutTableViewCell.identifier, for: indexPath) as! DailyDetailLayoutTableViewCell
+            
+            return cell
         default:
             break
         }
@@ -123,6 +128,8 @@ extension HomePageVC: UITableViewDelegate {
             return 166
         case .timeWeatherLayout:
             return 93
+        case .dailyDetailLayout:
+            return 153
         default:
             return 0
         }

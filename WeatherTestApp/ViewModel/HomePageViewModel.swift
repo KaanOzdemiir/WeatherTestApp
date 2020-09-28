@@ -13,7 +13,7 @@ class HomePageViewModel {
         .citiesLayout,
         .dailyWeatherLayout,
         .timeWeatherLayout,
-//        .dailyDetailLayout,
+        .dailyDetailLayout,
 //        .weeklyWeatherLayout
     ]
     
