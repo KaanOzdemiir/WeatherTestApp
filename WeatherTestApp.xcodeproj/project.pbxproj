@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -71,15 +71,80 @@
 		F758C29B25224BB800AACE11 /* WeatherTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				F758C2A225224BB800AACE11 /* Main.storyboard */,
+				F758C2C925224CD300AACE11 /* API */,
+				F758C2C825224CC800AACE11 /* Repository */,
+				F758C2C425224C7200AACE11 /* Model */,
+				F758C2C325224C6C00AACE11 /* View */,
+				F758C2C525224C7600AACE11 /* ViewModel */,
+				F758C2C625224C8C00AACE11 /* Helpers */,
+				F758C2C225224C5C00AACE11 /* Supporting Files */,
+			);
+			path = WeatherTestApp;
+			sourceTree = "<group>";
+		};
+		F758C2C225224C5C00AACE11 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				F758C29C25224BB800AACE11 /* AppDelegate.swift */,
 				F758C29E25224BB800AACE11 /* SceneDelegate.swift */,
-				F758C2A025224BB800AACE11 /* ViewController.swift */,
-				F758C2A225224BB800AACE11 /* Main.storyboard */,
 				F758C2A525224BB900AACE11 /* Assets.xcassets */,
 				F758C2A725224BB900AACE11 /* LaunchScreen.storyboard */,
 				F758C2AA25224BB900AACE11 /* Info.plist */,
 			);
-			path = WeatherTestApp;
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F758C2C325224C6C00AACE11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F758C2A025224BB800AACE11 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F758C2C425224C7200AACE11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F758C2C525224C7600AACE11 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F758C2C625224C8C00AACE11 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F758C2C725224CB800AACE11 /* Constants */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F758C2C725224CB800AACE11 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Constants;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		F758C2C825224CC800AACE11 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F758C2C925224CD300AACE11 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F7D6D756E7160A787A1C6792 /* Pods */ = {
@@ -88,7 +153,6 @@
 				C36C6C044AC1A06C86CFCB4A /* Pods-WeatherTestApp.debug.xcconfig */,
 				BEA18A5C1D7D2AD515043A69 /* Pods-WeatherTestApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
