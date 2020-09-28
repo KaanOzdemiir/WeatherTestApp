@@ -61,6 +61,7 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="saz-OO-dfh" secondAttribute="trailing" id="3DJ-uF-NnT"/>
                 <constraint firstItem="saz-OO-dfh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="SEl-Zb-PaW"/>

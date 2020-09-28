@@ -21,7 +21,7 @@
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tot-ia-Zjn">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="tb6-8u-pLW"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="rmb-bb-q0e"/>

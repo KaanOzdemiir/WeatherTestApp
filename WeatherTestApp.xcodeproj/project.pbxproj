@@ -20,6 +20,8 @@
 		F758C2DD2522543E00AACE11 /* CityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F758C2DB2522543E00AACE11 /* CityCollectionViewCell.xib */; };
 		F758C2E22522574400AACE11 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2E12522574400AACE11 /* CityData.swift */; };
 		F758C2E52522588000AACE11 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2E42522588000AACE11 /* HomePageViewModel.swift */; };
+		F758C2E925225AD600AACE11 /* DailyWeatherDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2E725225AD600AACE11 /* DailyWeatherDetailTableViewCell.swift */; };
+		F758C2EA25225AD600AACE11 /* DailyWeatherDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F758C2E825225AD600AACE11 /* DailyWeatherDetailTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F758C2DB2522543E00AACE11 /* CityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCollectionViewCell.xib; sourceTree = "<group>"; };
 		F758C2E12522574400AACE11 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
 		F758C2E42522588000AACE11 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		F758C2E725225AD600AACE11 /* DailyWeatherDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherDetailTableViewCell.swift; sourceTree = "<group>"; };
+		F758C2E825225AD600AACE11 /* DailyWeatherDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DailyWeatherDetailTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 			children = (
 				F758C2D42522531800AACE11 /* CitiesLayoutTableViewCell.swift */,
 				F758C2D52522531800AACE11 /* CitiesLayoutTableViewCell.xib */,
+				F758C2E725225AD600AACE11 /* DailyWeatherDetailTableViewCell.swift */,
+				F758C2E825225AD600AACE11 /* DailyWeatherDetailTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 				F758C2D72522531800AACE11 /* CitiesLayoutTableViewCell.xib in Resources */,
 				F758C2DD2522543E00AACE11 /* CityCollectionViewCell.xib in Resources */,
 				F758C2A925224BB900AACE11 /* LaunchScreen.storyboard in Resources */,
+				F758C2EA25225AD600AACE11 /* DailyWeatherDetailTableViewCell.xib in Resources */,
 				F758C2A625224BB900AACE11 /* Assets.xcassets in Resources */,
 				F758C2A425224BB800AACE11 /* Main.storyboard in Resources */,
 			);
@@ -307,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F758C2E22522574400AACE11 /* CityData.swift in Sources */,
+				F758C2E925225AD600AACE11 /* DailyWeatherDetailTableViewCell.swift in Sources */,
 				F758C2D62522531800AACE11 /* CitiesLayoutTableViewCell.swift in Sources */,
 				F758C2E52522588000AACE11 /* HomePageViewModel.swift in Sources */,
 				F758C2A125224BB800AACE11 /* HomePageVC.swift in Sources */,
