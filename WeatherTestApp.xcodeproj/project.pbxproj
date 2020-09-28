@@ -10,10 +10,16 @@
 		519566690E16429405BCFF62 /* Pods_WeatherTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B170E802C5AEC717850C21 /* Pods_WeatherTestApp.framework */; };
 		F758C29D25224BB800AACE11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C29C25224BB800AACE11 /* AppDelegate.swift */; };
 		F758C29F25224BB800AACE11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C29E25224BB800AACE11 /* SceneDelegate.swift */; };
-		F758C2A125224BB800AACE11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2A025224BB800AACE11 /* ViewController.swift */; };
+		F758C2A125224BB800AACE11 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2A025224BB800AACE11 /* HomePageVC.swift */; };
 		F758C2A425224BB800AACE11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F758C2A225224BB800AACE11 /* Main.storyboard */; };
 		F758C2A625224BB900AACE11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F758C2A525224BB900AACE11 /* Assets.xcassets */; };
 		F758C2A925224BB900AACE11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F758C2A725224BB900AACE11 /* LaunchScreen.storyboard */; };
+		F758C2D62522531800AACE11 /* CitiesLayoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2D42522531800AACE11 /* CitiesLayoutTableViewCell.swift */; };
+		F758C2D72522531800AACE11 /* CitiesLayoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F758C2D52522531800AACE11 /* CitiesLayoutTableViewCell.xib */; };
+		F758C2DC2522543E00AACE11 /* CityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2DA2522543E00AACE11 /* CityCollectionViewCell.swift */; };
+		F758C2DD2522543E00AACE11 /* CityCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F758C2DB2522543E00AACE11 /* CityCollectionViewCell.xib */; };
+		F758C2E22522574400AACE11 /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2E12522574400AACE11 /* CityData.swift */; };
+		F758C2E52522588000AACE11 /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F758C2E42522588000AACE11 /* HomePageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +29,17 @@
 		F758C29925224BB800AACE11 /* WeatherTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F758C29C25224BB800AACE11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F758C29E25224BB800AACE11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F758C2A025224BB800AACE11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F758C2A025224BB800AACE11 /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		F758C2A325224BB800AACE11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F758C2A525224BB900AACE11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F758C2A825224BB900AACE11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F758C2AA25224BB900AACE11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F758C2D42522531800AACE11 /* CitiesLayoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesLayoutTableViewCell.swift; sourceTree = "<group>"; };
+		F758C2D52522531800AACE11 /* CitiesLayoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitiesLayoutTableViewCell.xib; sourceTree = "<group>"; };
+		F758C2DA2522543E00AACE11 /* CityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionViewCell.swift; sourceTree = "<group>"; };
+		F758C2DB2522543E00AACE11 /* CityCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCollectionViewCell.xib; sourceTree = "<group>"; };
+		F758C2E12522574400AACE11 /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
+		F758C2E42522588000AACE11 /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +110,9 @@
 		F758C2C325224C6C00AACE11 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F758C2A025224BB800AACE11 /* ViewController.swift */,
+				F758C2D92522542000AACE11 /* CollectionViewCells */,
+				F758C2CC252251E400AACE11 /* TableViewCells */,
+				F758C2A025224BB800AACE11 /* HomePageVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 		F758C2C425224C7200AACE11 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F758C2E12522574400AACE11 /* CityData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +128,7 @@
 		F758C2C525224C7600AACE11 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F758C2E42522588000AACE11 /* HomePageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -145,6 +161,24 @@
 			children = (
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		F758C2CC252251E400AACE11 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F758C2D42522531800AACE11 /* CitiesLayoutTableViewCell.swift */,
+				F758C2D52522531800AACE11 /* CitiesLayoutTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		F758C2D92522542000AACE11 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				F758C2DA2522543E00AACE11 /* CityCollectionViewCell.swift */,
+				F758C2DB2522543E00AACE11 /* CityCollectionViewCell.xib */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		F7D6D756E7160A787A1C6792 /* Pods */ = {
@@ -215,6 +249,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F758C2D72522531800AACE11 /* CitiesLayoutTableViewCell.xib in Resources */,
+				F758C2DD2522543E00AACE11 /* CityCollectionViewCell.xib in Resources */,
 				F758C2A925224BB900AACE11 /* LaunchScreen.storyboard in Resources */,
 				F758C2A625224BB900AACE11 /* Assets.xcassets in Resources */,
 				F758C2A425224BB800AACE11 /* Main.storyboard in Resources */,
@@ -270,8 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F758C2A125224BB800AACE11 /* ViewController.swift in Sources */,
+				F758C2E22522574400AACE11 /* CityData.swift in Sources */,
+				F758C2D62522531800AACE11 /* CitiesLayoutTableViewCell.swift in Sources */,
+				F758C2E52522588000AACE11 /* HomePageViewModel.swift in Sources */,
+				F758C2A125224BB800AACE11 /* HomePageVC.swift in Sources */,
 				F758C29D25224BB800AACE11 /* AppDelegate.swift in Sources */,
+				F758C2DC2522543E00AACE11 /* CityCollectionViewCell.swift in Sources */,
 				F758C29F25224BB800AACE11 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZB49XM27T;
-				INFOPLIST_FILE = WeatherTestApp/Info.plist;
+				INFOPLIST_FILE = "WeatherTestApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,7 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8ZB49XM27T;
-				INFOPLIST_FILE = WeatherTestApp/Info.plist;
+				INFOPLIST_FILE = "WeatherTestApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
