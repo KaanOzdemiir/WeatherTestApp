@@ -1,0 +1,73 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireNetworkActivityLogger (2.4.0):
+    - Alamofire (~> 4.8)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - Hero (1.5.0)
+  - Kingfisher (5.15.3):
+    - Kingfisher/Core (= 5.15.3)
+  - Kingfisher/Core (5.15.3)
+  - lottie-ios (3.1.8)
+  - ObjectMapper (3.5.3)
+  - QuickLayout (3.0.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - Shimmer (1.0.2)
+  - SkeletonView (1.9)
+  - SwiftEntryKit (1.2.1):
+    - QuickLayout (= 3.0.0)
+
+DEPENDENCIES:
+  - AlamofireNetworkActivityLogger (~> 2.0)
+  - AlamofireObjectMapper (~> 5.2)
+  - Hero
+  - Kingfisher (~> 5.0)
+  - lottie-ios
+  - RxCocoa
+  - RxSwift
+  - Shimmer
+  - SkeletonView
+  - SwiftEntryKit (= 1.2.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireNetworkActivityLogger
+    - AlamofireObjectMapper
+    - Hero
+    - Kingfisher
+    - lottie-ios
+    - ObjectMapper
+    - QuickLayout
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - Shimmer
+    - SkeletonView
+    - SwiftEntryKit
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireNetworkActivityLogger: 6d3398c692d2c5d83b0c58793537860aca1e383d
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  Kingfisher: 2fef2f4d9e809285aff7f6195b5290520904f3fa
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
+  SkeletonView: f72ac4df69730e48324efae062ba580c2fce974d
+  SwiftEntryKit: 1661b766dd22b07679e6ebb326ccfbd81ceb0a20
+
+PODFILE CHECKSUM: ae48cb1da16d9641326832b34d0ff40ab25ad710
+
+COCOAPODS: 1.9.3
