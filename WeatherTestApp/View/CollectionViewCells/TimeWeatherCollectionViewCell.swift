@@ -23,6 +23,6 @@ class TimeWeatherCollectionViewCell: UICollectionViewCell {
         
         weatherImageViewContainerView.backgroundColor = timeWeather.isCurrent ? #colorLiteral(red: 0.4930396676, green: 0.3013834357, blue: 0.9637102485, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         timeLabel.text = timeWeather.time
-        weatherImageView.image = timeWeather.time.getWeatherImage()
+        weatherImageView.image = timeWeather.time.getWeatherImageByTime()
     }
 }

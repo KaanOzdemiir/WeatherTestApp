@@ -11,7 +11,7 @@ extension String {
     var intValue: Int {
         return Int(self) ?? 0
     }
-    func getWeatherImage() -> UIImage? {
+    func getWeatherImageByTime() -> UIImage? {
         guard let date = self.toTime() else {
             return nil
         }
@@ -29,6 +29,21 @@ extension String {
         }
         
         return #imageLiteral(resourceName: "ic_cloudy_night")
+    }
+    
+    func getWeatherImageByWeatherType() -> UIImage? {
+        switch self {
+        case "rainy":
+            return #imageLiteral(resourceName: "ic_rainy")
+        case "sunny_rainy":
+            return #imageLiteral(resourceName: "ic_sunny_rainy")
+        case "torrential_rain":
+            return #imageLiteral(resourceName: "ic_torrential_rain")
+        case "sunny":
+            return #imageLiteral(resourceName: "ic_sun")
+        default:
+            return nil
+        }
     }
     
     func toTime() -> Date? {

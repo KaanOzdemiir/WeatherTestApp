@@ -14,12 +14,14 @@ class HomePageViewModel {
         .dailyWeatherLayout,
         .timeWeatherLayout,
         .dailyDetailLayout,
-//        .weeklyWeatherLayout
+        .weeklyWeatherLayout
     ]
     
     var cities: [CityData] = []
     
     var timeWeathers: [TimeWeatherData] = []
+    
+    var weaklyWeathers: [WeaklyWeatherData] = []
     
     func fetchCities(completionHandler: @escaping (Bool) -> Void) {
         let cities = [
@@ -44,6 +46,21 @@ class HomePageViewModel {
         ]
         
         self.timeWeathers = timeWeathers
+        completionHandler(true)
+    }
+    
+    func fetchWeaklyWeathers(completionHandler: @escaping (Bool) -> Void) {
+        let weaklyWeathers = [
+            WeaklyWeatherData(dayName: "Pazartesi", weatherType: "rainy", maxDegree: 9, minDegree: 3),
+            WeaklyWeatherData(dayName: "Salı", weatherType: "sunny_rainy", maxDegree: 12, minDegree: 6),
+            WeaklyWeatherData(dayName: "Çarşamba", weatherType: "torrential_rain", maxDegree: 25, minDegree: 12),
+            WeaklyWeatherData(dayName: "Perşembe", weatherType: "rainy", maxDegree: 34, minDegree: 16),
+            WeaklyWeatherData(dayName: "Cuma", weatherType: "sunny", maxDegree: 8, minDegree: 7),
+            WeaklyWeatherData(dayName: "Cumartesi", weatherType: "sunny_rainy", maxDegree: 19, minDegree: 13),
+            WeaklyWeatherData(dayName: "Pazar", weatherType: "torrential_rain", maxDegree: 11, minDegree: 3)
+        ]
+        
+        self.weaklyWeathers = weaklyWeathers
         completionHandler(true)
     }
 }

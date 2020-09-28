@@ -23,6 +23,7 @@ class HomePageVC: UIViewController {
             tableView.register(UINib(nibName: DailyWeatherDetailTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DailyWeatherDetailTableViewCell.identifier)
             tableView.register(UINib(nibName: TimeWeatherLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: TimeWeatherLayoutTableViewCell.identifier)
             tableView.register(UINib(nibName: DailyDetailLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DailyDetailLayoutTableViewCell.identifier)
+            tableView.register(UINib(nibName: WeaklyWeatherLayoutTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: WeaklyWeatherLayoutTableViewCell.identifier)
         }
     }
     
@@ -36,6 +37,21 @@ class HomePageVC: UIViewController {
         fetchCities()
         
         fetchTimeWeathers()
+        
+        fetchWeaklyWeathers()
+    }
+    
+    func fetchWeaklyWeathers() {
+        viewModel.fetchWeaklyWeathers { [weak self] (status) in
+            guard let self = self else { return }
+            
+            if status {
+                
+                if let index = self.viewModel.homePageLayoutData.firstIndex(where: {$0 == .weeklyWeatherLayout}) {
+                    self.reloadRow(index: index)
+                }
+            }
+        }
     }
     
     func fetchCities() {
@@ -106,11 +122,13 @@ extension HomePageVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: DailyDetailLayoutTableViewCell.identifier, for: indexPath) as! DailyDetailLayoutTableViewCell
             
             return cell
-        default:
-            break
+        case .weeklyWeatherLayout:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WeaklyWeatherLayoutTableViewCell.identifier, for: indexPath) as! WeaklyWeatherLayoutTableViewCell
+            cell.weaklyWeathers = viewModel.weaklyWeathers
+            cell.tableView.reloadData()
+
+            return cell
         }
-        
-        return UITableViewCell()
     }
     
     
@@ -130,6 +148,8 @@ extension HomePageVC: UITableViewDelegate {
             return 93
         case .dailyDetailLayout:
             return 153
+        case .weeklyWeatherLayout:
+            return 432
         default:
             return 0
         }
