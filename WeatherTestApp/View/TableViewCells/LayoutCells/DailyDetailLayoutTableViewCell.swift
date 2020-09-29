@@ -29,8 +29,27 @@ class DailyDetailLayoutTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        resetViews()
     }
-
     
+    func resetViews() {
+        windLabel.text = nil
+        visibilityLabel.text = nil
+        moistureLabel.text = nil
+    }
     
+    func setCell(with data: WeatherResponse?) {
+        
+        if let windSpeed = data?.wind?.speed {
+            windLabel.text = "\(windSpeed) mhs/s"
+        }
+        
+        if let visibility = data?.visibility {
+            visibilityLabel.text = "\(visibility / 1000) km"
+        }
+        
+        if let humidity = data?.main?.humidity {
+            moistureLabel.text = "%\(humidity)"
+        }
+    }
 }

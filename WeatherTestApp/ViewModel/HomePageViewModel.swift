@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import ObjectMapper
+import RxSwift
 
 class HomePageViewModel {
     
@@ -23,17 +25,47 @@ class HomePageViewModel {
     
     var weaklyWeathers: [WeaklyWeatherData] = []
     
-    func fetchCities(completionHandler: @escaping (Bool) -> Void) {
-        let cities = [
-            CityData(name: "Ankara", isSelected: true),
-            CityData(name: "İstanbul", isSelected: false),
-            CityData(name: "Antalya", isSelected: false),
-            CityData(name: "İzmir", isSelected: false),
-            CityData(name: "Çankırı", isSelected: false)
-        ]
+    var shouldPresentCitySelection = UserVariables.selectedCitiesJSONString.isEmpty
+    
+    let weatherRepo = WeatherRespository()
+    
+    let disposeBag = DisposeBag()
+    
+    var weatherResponse: WeatherResponse?
+    
+    var currentSelectedCity: CityData?
+    
+    init() {
+        if let selectedCities = Mapper<CityData>().mapArray(JSONString: UserVariables.selectedCitiesJSONString), selectedCities.count > 0 {
+            currentSelectedCity = selectedCities.first
+        }
+    }
+    
+    func fetchSelectedCities(completionHandler: @escaping (Bool) -> Void) {
         
-        self.cities = cities
-        completionHandler(true)
+        if let selectedCities = Mapper<CityData>().mapArray(JSONString: UserVariables.selectedCitiesJSONString), selectedCities.count > 0 {
+            selectedCities.first?.isSelected = true
+            cities = selectedCities
+            completionHandler(true)
+        }else{
+            completionHandler(false)
+        }
+    }
+    
+    func fetchWeather(completionHandler: @escaping (ResponseState<WeatherResponse>) -> Void) {
+        
+        var params: [String: Any] = [:]
+        if !(params.count > 0) {
+            params = [
+                "q": "\(currentSelectedCity?.name ?? ""),\(currentSelectedCity?.country ?? "")"
+            ]
+        }
+        
+        weatherRepo.getWeather(params: params).subscribe(onNext: { (response) in
+            completionHandler(.success(response))
+        }, onError: { (error) in
+            completionHandler(.failed(error))
+        }).disposed(by: disposeBag)
     }
     
     func fetchTimeWeathers(completionHandler: @escaping (Bool) -> Void) {

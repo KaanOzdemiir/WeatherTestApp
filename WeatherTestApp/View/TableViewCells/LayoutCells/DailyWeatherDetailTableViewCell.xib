@@ -142,6 +142,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="dateLabel" destination="OHB-pD-Aw2" id="KnC-WT-QC9"/>
+                <outlet property="degreeLabel" destination="6gp-Pa-5hB" id="X0H-7c-9IX"/>
+                <outlet property="maxDegreeLabel" destination="8tf-mt-RRp" id="659-Y6-AuZ"/>
+                <outlet property="minDegreeLabel" destination="MiU-3f-zom" id="K0a-l7-nyg"/>
+                <outlet property="weatherDescriptionLabel" destination="gCM-ro-KLh" id="AJO-ca-f2r"/>
+                <outlet property="weatherImageView" destination="eu4-OQ-Tko" id="Tv3-3N-hW4"/>
+            </connections>
             <point key="canvasLocation" x="124.6376811594203" y="181.80803571428569"/>
         </tableViewCell>
     </objects>

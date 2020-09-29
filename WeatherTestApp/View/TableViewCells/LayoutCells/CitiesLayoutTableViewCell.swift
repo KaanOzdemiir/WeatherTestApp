@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol CitiesLayoutTableViewCellDelegate: class {
+    func didSelect(selectedCity: CityData)
+}
+
 class CitiesLayoutTableViewCell: UITableViewCell {
+    
+    weak var delegate: CitiesLayoutTableViewCellDelegate?
     
     static var identifier = "CitiesLayoutTableViewCell"
 
@@ -51,7 +57,11 @@ extension CitiesLayoutTableViewCell: UICollectionViewDataSource {
 }
 
 extension CitiesLayoutTableViewCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCity = cities[indexPath.item]
+        delegate?.didSelect(selectedCity: selectedCity)
+    }
 }
 
 extension CitiesLayoutTableViewCell: UICollectionViewDelegateFlowLayout {

@@ -56,3 +56,26 @@ extension String {
         return date
     }
 }
+
+extension Int {
+    var timeInterval: TimeInterval {
+        return TimeInterval(self)
+    }
+    
+    func toDateString() -> String? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        
+        let date = Date(timeIntervalSince1970: self.timeInterval)
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
+    }
+}
+
+extension Double {
+    func toCelcius() -> String {
+        return String(format: "%.0f", self - 273.15) + "°C"
+    }
+}

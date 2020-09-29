@@ -32,13 +32,60 @@ class HomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if viewModel.shouldPresentCitySelection {
+            performSegue(withIdentifier: "SegueCitySelectionVC", sender: nil)
+            return
+        }
         
-        
+        fecthAllRequiredDatas()
+    }
+    
+    func fecthAllRequiredDatas() {
         fetchCities()
+        
+        fetchWeather()
         
         fetchTimeWeathers()
         
         fetchWeaklyWeathers()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueCitySelectionVC" {
+            let navVC = segue.destination as? UINavigationController
+            let vc = navVC?.viewControllers.first as? CitySelectionVC
+            
+            vc?.viewModel.isSelectionDone.subscribe(onNext: { [weak self] (status) in
+                
+                if status {
+                    self?.viewModel.fetchSelectedCities(completionHandler: { [weak self] (status) in
+                        
+                        if status {
+                            self?.viewModel.currentSelectedCity = self?.viewModel.cities.first
+                            self?.fecthAllRequiredDatas()
+                        }
+                    })
+                }
+            })
+            .disposed(by: viewModel.disposeBag)
+        }
+    }
+    
+    func fetchWeather() {
+        viewModel.fetchWeather() { [weak self] (state) in
+            guard let self = self else { return }
+            switch state {
+            case .success(let response):
+                print("🟢 Hava durumu verileri hazır!")
+                self.viewModel.weatherResponse = response
+                self.tableView.reloadData()
+                break
+                
+            case .failed(let error):
+                print("🔴 Hata oluştu:", error.localizedDescription)
+                break
+            }
+        }
     }
     
     func fetchWeaklyWeathers() {
@@ -55,8 +102,7 @@ class HomePageVC: UIViewController {
     }
     
     func fetchCities() {
-        viewModel.fetchCities { [weak self] (status) in
-            
+        viewModel.fetchSelectedCities { [weak self] (status) in
             guard let self = self else { return }
             
             if status {
@@ -64,6 +110,8 @@ class HomePageVC: UIViewController {
                 if let index = self.viewModel.homePageLayoutData.firstIndex(where: {$0 == .citiesLayout}) {
                     self.reloadRow(index: index)
                 }
+            }else{
+                self.performSegue(withIdentifier: "SegueCitySelectionVC", sender: nil)
             }
         }
     }
@@ -105,13 +153,14 @@ extension HomePageVC: UITableViewDataSource {
         case .citiesLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: CitiesLayoutTableViewCell.identifier, for: indexPath) as! CitiesLayoutTableViewCell
             
+            cell.delegate = self
             cell.cities = viewModel.cities
             cell.collectionView.reloadData()
             
             return cell
         case .dailyWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: DailyWeatherDetailTableViewCell.identifier, for: indexPath) as! DailyWeatherDetailTableViewCell
-            
+            cell.setCell(with: viewModel.weatherResponse)
             return cell
         case .timeWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: TimeWeatherLayoutTableViewCell.identifier, for: indexPath) as! TimeWeatherLayoutTableViewCell
@@ -121,10 +170,16 @@ extension HomePageVC: UITableViewDataSource {
         case .dailyDetailLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: DailyDetailLayoutTableViewCell.identifier, for: indexPath) as! DailyDetailLayoutTableViewCell
             
+            cell.setCell(with: viewModel.weatherResponse)
+            
+            // UV Response içinde hangisi?
+            
             return cell
         case .weeklyWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: WeaklyWeatherLayoutTableViewCell.identifier, for: indexPath) as! WeaklyWeatherLayoutTableViewCell
             cell.weaklyWeathers = viewModel.weaklyWeathers
+            
+            // Haftalık Veriler
             cell.tableView.reloadData()
 
             return cell
@@ -156,3 +211,9 @@ extension HomePageVC: UITableViewDelegate {
     }
 }
 
+extension HomePageVC: CitiesLayoutTableViewCellDelegate {
+    func didSelect(selectedCity: CityData) {
+        viewModel.currentSelectedCity = selectedCity
+        fetchWeather()
+    }
+}
