@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dfN-O6-FeP">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xm4-F4-GwJ" id="qtF-g1-RXa"/>
@@ -95,17 +95,21 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="118.52678571428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Şehirler-->
         <scene sceneID="vep-Bk-siB">
             <objects>
-                <viewController id="sIE-vZ-hQx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CityWeatherVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sIE-vZ-hQx" customClass="CityWeatherVC" customModule="WeatherTestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BGb-E6-g0m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vyi-VC-Nec">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vyi-VC-Nec">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sIE-vZ-hQx" id="vks-Am-L7G"/>
+                                    <outlet property="delegate" destination="sIE-vZ-hQx" id="V9j-MB-G5F"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ehh-iB-dpu"/>
@@ -117,7 +121,21 @@
                             <constraint firstItem="ehh-iB-dpu" firstAttribute="trailing" secondItem="Vyi-VC-Nec" secondAttribute="trailing" id="sLl-XT-JqA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Cj7-YB-Kzr"/>
+                    <navigationItem key="navigationItem" title="Şehirler" id="Cj7-YB-Kzr">
+                        <barButtonItem key="leftBarButtonItem" title="Düzenle" id="0yi-b3-p2V">
+                            <color key="tintColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6FY-5t-d9u">
+                            <color key="tintColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="sIE-vZ-hQx" id="kN6-DU-e1C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Vyi-VC-Nec" id="EJc-yy-vkA"/>
+                        <segue destination="xm4-F4-GwJ" kind="show" identifier="SegueCitySelectionVC" id="sZU-fh-o5D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZUg-cO-HJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,8 +221,11 @@
             <point key="canvasLocation" x="1047.8260869565217" y="841.74107142857144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="sZU-fh-o5D"/>
+    </inferredMetricsTieBreakers>
     <resources>
-        <image name="ic_location" width="19" height="23"/>
+        <image name="ic_location" width="18.5" height="22.5"/>
         <image name="ic_sun_cloud" width="27.5" height="18"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

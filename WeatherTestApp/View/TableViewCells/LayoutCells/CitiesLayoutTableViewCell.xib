@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vFT-Be-4Iz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="188"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kMD-JH-8og">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="188"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0of-xn-uM1">
                                     <size key="itemSize" width="128" height="128"/>
@@ -36,8 +36,8 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="vFT-Be-4Iz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0eK-YB-FiF"/>
-                    <constraint firstItem="vFT-Be-4Iz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5bX-D4-UaB"/>
-                    <constraint firstAttribute="trailing" secondItem="vFT-Be-4Iz" secondAttribute="trailing" id="BFo-Tt-0zM"/>
+                    <constraint firstItem="vFT-Be-4Iz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="5bX-D4-UaB"/>
+                    <constraint firstAttribute="trailing" secondItem="vFT-Be-4Iz" secondAttribute="trailing" constant="8" id="BFo-Tt-0zM"/>
                     <constraint firstAttribute="bottom" secondItem="vFT-Be-4Iz" secondAttribute="bottom" id="TPn-YU-Ohu"/>
                 </constraints>
             </tableViewCellContentView>

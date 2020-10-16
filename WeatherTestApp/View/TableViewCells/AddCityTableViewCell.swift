@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CityTableViewCell: UITableViewCell {
+class AddCityTableViewCell: UITableViewCell {
     
-    static var identifier = "CityTableViewCell"
+    static var identifier = "AddCityTableViewCell"
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var addButton: UIButton!

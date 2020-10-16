@@ -18,7 +18,7 @@ class TimeWeatherLayoutTableViewCell: UITableViewCell {
         }
     }
     
-    var timeWeathers: [TimeWeatherData] = []
+    var todayWeatherForecastByTime: [ForecastData] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,14 +29,19 @@ class TimeWeatherLayoutTableViewCell: UITableViewCell {
 
 extension TimeWeatherLayoutTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return timeWeathers.count
+        return todayWeatherForecastByTime.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeWeatherCollectionViewCell.identifier, for: indexPath) as! TimeWeatherCollectionViewCell
         
-        let timeWeather = timeWeathers[indexPath.item]
-        cell.setCell(withTimeWeather: timeWeather)
+        let forecast = todayWeatherForecastByTime[indexPath.item]
+        cell.setCell(with: forecast)
+        if let _ = todayWeatherForecastByTime.first(where: {$0.dt!.timeInterval < Date().now}){
+            cell.weatherImageViewContainerView.backgroundColor = #colorLiteral(red: 0.4930396676, green: 0.3013834357, blue: 0.9637102485, alpha: 1)
+        }else{
+            cell.weatherImageViewContainerView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
         return cell
     }
     

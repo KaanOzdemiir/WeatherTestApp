@@ -21,10 +21,11 @@ class WeaklyWeatherTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func setCell(withWeaklyWeather weaklyWeather: WeaklyWeatherData) {
-        dayNameLabel.text = weaklyWeather.dayName
-        weatherImageView.image = weaklyWeather.weatherType.getWeatherImageByWeatherType()
-        maxDegreeLabel.text = "\(weaklyWeather.maxDegree)°"
-        minDegreeLabel.text = "\(weaklyWeather.minDegree)°"
+    func setCell(with data: AvarageForeCast) {
+        print("XXXXX -> ", data.dt)
+        dayNameLabel.text = "\(data.dt!.getDayName()!)"
+        weatherImageView.image = #imageLiteral(resourceName: "ic_sun")
+        maxDegreeLabel.text = data.maxTemp?.toCelcius()
+        minDegreeLabel.text = data.minTemp?.toCelcius()
     }
 }

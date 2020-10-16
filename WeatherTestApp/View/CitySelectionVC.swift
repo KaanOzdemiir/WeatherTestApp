@@ -12,7 +12,7 @@ class CitySelectionVC: UIViewController {
     let viewModel = CitySelectionViewModel()
     @IBOutlet weak var tableView: UITableView!{
         didSet{
-            tableView.register(UINib(nibName: CityTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CityTableViewCell.identifier)
+            tableView.register(UINib(nibName: AddCityTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: AddCityTableViewCell.identifier)
         }
     }
     
@@ -67,7 +67,7 @@ extension CitySelectionVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CityTableViewCell.identifier, for: indexPath) as! CityTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AddCityTableViewCell.identifier, for: indexPath) as! AddCityTableViewCell
         
         let city = viewModel.groppedCities[indexPath.section].sectionObjects[indexPath.row]
         cell.label.text = city.name

@@ -10,13 +10,31 @@ import RxSwift
 
 class WeatherRespository {
     
-    func getWeather(params: [String: Any]) -> Observable<WeatherResponse> {
+    func getWeatherForecast(params: [String: Any]) -> Observable<ForecastResponse> {
         return Observable.create({ observer -> Disposable in
             
-            AlamofireService.getWeather(params: params, completion: { (response) in
+            AlamofireService.getWeatherForecast(params: params, completion: { (response) in
                 
                 if let error = response.error {
-                    print("‼️ Failed. (getWeather) *-> Error: ", error.localizedDescription)
+                    print("‼️ Failed. (getWeatherForecast) *-> Error: ", error.localizedDescription)
+                    observer.onError(error)
+                    return
+                }
+                
+                observer.onNext(response.result.value!)
+                observer.onCompleted()
+            })
+            return Disposables.create()
+        })
+    }
+    
+    func getForecast(params: [String: Any]) -> Observable<ForecastResponse> {
+        return Observable.create({ observer -> Disposable in
+            
+            AlamofireService.getForecast(params: params, completion: { (response) in
+                
+                if let error = response.error {
+                    print("‼️ Failed. (getForecast) *-> Error: ", error.localizedDescription)
                     observer.onError(error)
                     return
                 }

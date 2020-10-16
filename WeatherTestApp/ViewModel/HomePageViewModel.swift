@@ -21,17 +21,17 @@ class HomePageViewModel {
     
     var cities: [CityData] = []
     
-    var timeWeathers: [TimeWeatherData] = []
-    
-    var weaklyWeathers: [WeaklyWeatherData] = []
-    
+    var weaklyAvarageForecastByDay: [AvarageForeCast] = []
+        
     var shouldPresentCitySelection = UserVariables.selectedCitiesJSONString.isEmpty
     
     let weatherRepo = WeatherRespository()
     
     let disposeBag = DisposeBag()
     
-    var weatherResponse: WeatherResponse?
+    var weatherForecastResponse: ForecastResponse?
+    
+    var todayWeatherForecastByTime: [ForecastData] = []
     
     var currentSelectedCity: CityData?
     
@@ -52,8 +52,7 @@ class HomePageViewModel {
         }
     }
     
-    func fetchWeather(completionHandler: @escaping (ResponseState<WeatherResponse>) -> Void) {
-        
+    func fetchWeatherForecast(completionHandler: @escaping (ResponseState<ForecastResponse>) -> Void) {
         var params: [String: Any] = [:]
         if !(params.count > 0) {
             params = [
@@ -61,25 +60,61 @@ class HomePageViewModel {
             ]
         }
         
-        weatherRepo.getWeather(params: params).subscribe(onNext: { (response) in
+        weatherRepo.getWeatherForecast(params: params).subscribe(onNext: { (response) in
+            
+            let grouppedForecastByDay = Dictionary(grouping: response.forcastList?.sorted(by: {$0.dt! < $1.dt!}) ?? [], by: {$0.dt!})
+            
+            var avarageForcastByDay: [AvarageForeCast] = []
+            
+            
+            grouppedForecastByDay.forEach { (key, value) in
+                
+                let sortedForecast = value.sorted(by: {$0.main?.tempMax ?? -1000.0 > $1.main?.tempMax ?? -1000.0})
+                let maxTemp = sortedForecast.first?.main?.tempMax
+                let minTemp = sortedForecast.first?.main?.tempMin
+                let avarageForecast = AvarageForeCast(dt:key, day: "", icon: "", maxTemp: maxTemp, minTemp: minTemp)
+                
+                avarageForcastByDay.append(avarageForecast)
+            }
+            
+            self.weaklyAvarageForecastByDay = avarageForcastByDay
+            
+            self.todayWeatherForecastByTime = (response.forcastList?.filter({$0.dt!.timeInterval > Date().xDayAgoEndTimeStamp(1) && $0.dt!.timeInterval <= Date().todayEndTimeStamp + 1}))!
+            
             completionHandler(.success(response))
         }, onError: { (error) in
             completionHandler(.failed(error))
         }).disposed(by: disposeBag)
     }
     
-    func fetchTimeWeathers(completionHandler: @escaping (Bool) -> Void) {
-        let timeWeathers = [
-            TimeWeatherData(time: "06:00", isCurrent: false),
-            TimeWeatherData(time: "12:00", isCurrent: false),
-            TimeWeatherData(time: "18:00", isCurrent: true),
-            TimeWeatherData(time: "21:00", isCurrent: false),
-            TimeWeatherData(time: "24:00", isCurrent: false),
-        ]
-        
-        self.timeWeathers = timeWeathers
-        completionHandler(true)
-    }
+//    func fetchWeather(completionHandler: @escaping (ResponseState<WeatherResponse>) -> Void) {
+//
+//        var params: [String: Any] = [:]
+//        if !(params.count > 0) {
+//            params = [
+//                "q": "\(currentSelectedCity?.name ?? ""),\(currentSelectedCity?.country ?? "")"
+//            ]
+//        }
+//
+//        weatherRepo.getWeather(params: params).subscribe(onNext: { (response) in
+//            completionHandler(.success(response))
+//        }, onError: { (error) in
+//            completionHandler(.failed(error))
+//        }).disposed(by: disposeBag)
+//    }
+    
+//    func fetchTimeWeathers(completionHandler: @escaping (Bool) -> Void) {
+//        let timeWeathers = [
+//            TimeWeatherData(time: "06:00", isCurrent: false),
+//            TimeWeatherData(time: "12:00", isCurrent: false),
+//            TimeWeatherData(time: "18:00", isCurrent: true),
+//            TimeWeatherData(time: "21:00", isCurrent: false),
+//            TimeWeatherData(time: "24:00", isCurrent: false),
+//        ]
+//
+//        self.timeWeathers = timeWeathers
+//        completionHandler(true)
+//    }
     
     func fetchWeaklyWeathers(completionHandler: @escaping (Bool) -> Void) {
         let weaklyWeathers = [
@@ -92,7 +127,7 @@ class HomePageViewModel {
             WeaklyWeatherData(dayName: "Pazar", weatherType: "torrential_rain", maxDegree: 11, minDegree: 3)
         ]
         
-        self.weaklyWeathers = weaklyWeathers
+//        self.weaklyWeathers = weaklyWeathers
         completionHandler(true)
     }
 }

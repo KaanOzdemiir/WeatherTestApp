@@ -20,35 +20,29 @@
                         <rect key="frame" x="16" y="16" width="288" height="19.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pazartesi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a85-kI-D2I">
-                                <rect key="frame" x="0.0" y="2.5" width="183" height="14.5"/>
+                                <rect key="frame" x="0.0" y="2.5" width="200" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                 <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-XJ-G1i">
-                                <rect key="frame" x="183" y="0.0" width="105" height="19.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gYw-XJ-G1i">
+                                <rect key="frame" x="200" y="0.0" width="88" height="19.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_cloudy_night" translatesAutoresizingMaskIntoConstraints="NO" id="hao-t3-vZt">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" image="ic_cloudy_night" translatesAutoresizingMaskIntoConstraints="NO" id="hao-t3-vZt">
                                         <rect key="frame" x="0.0" y="0.0" width="25" height="19.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="57m-hb-RCU"/>
                                             <constraint firstAttribute="width" constant="25" id="p0U-4H-Aqz"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K5-fA-6a6">
-                                        <rect key="frame" x="41" y="0.0" width="24" height="19.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="nOc-CR-6NL"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" horizontalCompressionResistancePriority="754" text="9°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3K5-fA-6a6">
+                                        <rect key="frame" x="41" y="0.0" width="15.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-FZ-RwP">
-                                        <rect key="frame" x="81" y="0.0" width="24" height="19.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="0VP-ok-AdX"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="3°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CB-FZ-RwP">
+                                        <rect key="frame" x="72.5" y="0.0" width="15.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.53725490196078429" green="0.5607843137254902" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

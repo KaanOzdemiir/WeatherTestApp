@@ -43,10 +43,8 @@ class HomePageVC: UIViewController {
     func fecthAllRequiredDatas() {
         fetchCities()
         
-        fetchWeather()
-        
-        fetchTimeWeathers()
-        
+        fetchWeatherForecast()
+                
         fetchWeaklyWeathers()
     }
     
@@ -71,13 +69,13 @@ class HomePageVC: UIViewController {
         }
     }
     
-    func fetchWeather() {
-        viewModel.fetchWeather() { [weak self] (state) in
+    func fetchWeatherForecast() {
+        viewModel.fetchWeatherForecast { [weak self] (state) in
             guard let self = self else { return }
             switch state {
             case .success(let response):
                 print("🟢 Hava durumu verileri hazır!")
-                self.viewModel.weatherResponse = response
+                self.viewModel.weatherForecastResponse = response
                 self.tableView.reloadData()
                 break
                 
@@ -115,18 +113,6 @@ class HomePageVC: UIViewController {
             }
         }
     }
-    
-    func fetchTimeWeathers() {
-        viewModel.fetchTimeWeathers { [weak self] (status) in
-            guard let self = self else { return }
-            
-            if status {
-                if let index = self.viewModel.homePageLayoutData.firstIndex(where: {$0 == .timeWeatherLayout}) {
-                    self.reloadRow(index: index)
-                }
-            }
-        }
-    }
 
     func reloadTableView() {
         DispatchQueue.main.async {
@@ -160,24 +146,24 @@ extension HomePageVC: UITableViewDataSource {
             return cell
         case .dailyWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: DailyWeatherDetailTableViewCell.identifier, for: indexPath) as! DailyWeatherDetailTableViewCell
-            cell.setCell(with: viewModel.weatherResponse)
+            cell.setCell(with: viewModel.weatherForecastResponse)
             return cell
         case .timeWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: TimeWeatherLayoutTableViewCell.identifier, for: indexPath) as! TimeWeatherLayoutTableViewCell
-            cell.timeWeathers = viewModel.timeWeathers
+            cell.todayWeatherForecastByTime = viewModel.todayWeatherForecastByTime
             cell.collectionView.reloadData()
             return cell
         case .dailyDetailLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: DailyDetailLayoutTableViewCell.identifier, for: indexPath) as! DailyDetailLayoutTableViewCell
             
-            cell.setCell(with: viewModel.weatherResponse)
+            cell.setCell(with: viewModel.weatherForecastResponse)
             
             // UV Response içinde hangisi?
             
             return cell
         case .weeklyWeatherLayout:
             let cell = tableView.dequeueReusableCell(withIdentifier: WeaklyWeatherLayoutTableViewCell.identifier, for: indexPath) as! WeaklyWeatherLayoutTableViewCell
-            cell.weaklyWeathers = viewModel.weaklyWeathers
+            cell.weaklyAvarageForecastByDay = viewModel.weaklyAvarageForecastByDay.sorted(by: {$0.dt! < $1.dt!})
             
             // Haftalık Veriler
             cell.tableView.reloadData()
@@ -214,6 +200,14 @@ extension HomePageVC: UITableViewDelegate {
 extension HomePageVC: CitiesLayoutTableViewCellDelegate {
     func didSelect(selectedCity: CityData) {
         viewModel.currentSelectedCity = selectedCity
-        fetchWeather()
+        fetchWeatherForecast()
     }
+}
+
+struct AvarageForeCast {
+    var dt: Int?
+    var day: String?
+    var icon: String?
+    var maxTemp: Double?
+    var minTemp: Double?
 }

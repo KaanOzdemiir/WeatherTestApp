@@ -21,7 +21,7 @@ class WeaklyWeatherLayoutTableViewCell: UITableViewCell {
     }
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-    var weaklyWeathers: [WeaklyWeatherData] = []
+    var weaklyAvarageForecastByDay: [AvarageForeCast] = []
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,14 +32,14 @@ class WeaklyWeatherLayoutTableViewCell: UITableViewCell {
 
 extension WeaklyWeatherLayoutTableViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weaklyWeathers.count
+        return weaklyAvarageForecastByDay.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: WeaklyWeatherTableViewCell.identifier, for: indexPath) as! WeaklyWeatherTableViewCell
         
-        let weaklyWeather = weaklyWeathers[indexPath.row]
-        cell.setCell(withWeaklyWeather: weaklyWeather)
+        let avarageForecast = weaklyAvarageForecastByDay[indexPath.row]
+        cell.setCell(with: avarageForecast)
 
         return cell
     }

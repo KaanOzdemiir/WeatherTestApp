@@ -32,24 +32,26 @@ class DailyWeatherDetailTableViewCell: UITableViewCell {
         degreeLabel.text = nil
     }
 
-    func setCell(with data: WeatherResponse?) {
-        if let temp = data?.main?.temp {
+    func setCell(with data: ForecastResponse?) {
+        let currenntForecast = data?.getCurrentForecast()
+        
+        if let temp = currenntForecast?.main?.temp {
             degreeLabel.text = temp.toCelcius()
         }
         
-        if let tempMax = data?.main?.tempMax {
+        if let tempMax = currenntForecast?.main?.tempMax {
             maxDegreeLabel.text = tempMax.toCelcius()
         }
         
-        if let tempMin = data?.main?.tempMin {
+        if let tempMin = currenntForecast?.main?.tempMin {
             minDegreeLabel.text = tempMin.toCelcius()
         }
         
-        if let desc = data?.weather?.first?.weatherDescription {
+        if let desc = currenntForecast?.weather?.first?.weatherDescription {
             weatherDescriptionLabel.text = desc.localizedCapitalized
         }
         
-        if let date = data?.dt?.toDateString() {
+        if let date = currenntForecast?.dt?.toDateString() {
             dateLabel.text = date
         }
         

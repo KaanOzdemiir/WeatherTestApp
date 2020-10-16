@@ -38,17 +38,17 @@ class DailyDetailLayoutTableViewCell: UITableViewCell {
         moistureLabel.text = nil
     }
     
-    func setCell(with data: WeatherResponse?) {
-        
-        if let windSpeed = data?.wind?.speed {
+    func setCell(with data: ForecastResponse?) {
+        let currentForecast = data?.getCurrentForecast()
+        if let windSpeed = currentForecast?.wind?.speed {
             windLabel.text = "\(windSpeed) mhs/s"
         }
         
-        if let visibility = data?.visibility {
+        if let visibility = currentForecast?.visibility {
             visibilityLabel.text = "\(visibility / 1000) km"
         }
         
-        if let humidity = data?.main?.humidity {
+        if let humidity = currentForecast?.main?.humidity {
             moistureLabel.text = "%\(humidity)"
         }
     }

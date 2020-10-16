@@ -10,4 +10,5 @@ import Foundation
 struct URLPath {
     static let getCities = "/.json"
     static let weather = "/data/2.5/weather"
+    static let forecast = "/data/2.5/forecast"
 }

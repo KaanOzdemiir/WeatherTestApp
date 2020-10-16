@@ -60,12 +60,17 @@ extension CitiesLayoutTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let selectedCity = cities[indexPath.item]
+        cities.forEach({$0.isSelected = false})
+        selectedCity.isSelected = true
         delegate?.didSelect(selectedCity: selectedCity)
     }
 }
 
 extension CitiesLayoutTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 100, height: 25)
+        let city = cities[indexPath.item]
+        let width = city.name.width(withConstrainedHeight: 17, font: .systemFont(ofSize: 14))
+        print("\(city.name) Width:\(width)")
+        return .init(width: width + 32 , height: 25)
     }
 }
